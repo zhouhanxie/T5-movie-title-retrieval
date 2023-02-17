@@ -1,6 +1,12 @@
 # Distant Supervised Movie Title Extraction Using FLAN-T5
 
-Generative movie title retrieval using FLAN-T5 in 🤗HuggingFace ecosystem.
+Generative movie title retrieval using FLAN-T5-xl in 🤗HuggingFace ecosystem.
+
+```conda create --name <env> --file requirements.txt```
+```mkdir -p ./checkpoints/generative_movie_title_ner```
+```bash train model.sh```
+
+1 epoch on a 48GB GPU should be sufficient, and then use the model like any standard HF model.
 
 ### TL;DR.
 
