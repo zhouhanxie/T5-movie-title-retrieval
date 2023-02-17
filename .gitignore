@@ -1,0 +1,4 @@
+**annotated_data/
+*.ipynb
+.ipynb_checkpoints
+checkpoints
