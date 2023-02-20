@@ -2,11 +2,35 @@
 
 Generative movie title retrieval using FLAN-T5-xl in 🤗HuggingFace ecosystem.
 
-```conda create --name <env> --file requirements.txt```
-```mkdir -p ./checkpoints/generative_movie_title_ner```
-```bash train model.sh```
+```
+conda create --name <env> --file requirements.txt
+mkdir -p ./checkpoints/generative_movie_title_ner
+bash train model.sh
+```
 
 1 epoch on a 48GB GPU should be sufficient, and then use the model like any standard HF model.
+
+---
+
+Example Usage
+```
+extractor = T5MovieExtractor('./checkpoints/generative_movie_title_ner')
+extractor(
+        ['I love the scene in Titanic!', 'Gone With the Wind\nAvengers End Game\The Zippers Saga', 'omg love this!'],
+        batch_size=2,
+        on_error='raise',
+        disable_tqdm=False
+    )
+```
+outputs
+```
+[{'raw_text': 'I love the scene in Titanic!', 'extracted': 'Titanic'},
+ {'raw_text': 'Gone With the Wind\nAvengers End Game\\The Zippers Saga',
+  'extracted': 'Gone With the Wind, Avengers End Game, The Zippers Saga'},
+ {'raw_text': 'omg love this!', 'extracted': 'None'}]
+```
+
+---
 
 ### TL;DR.
 
