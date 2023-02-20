@@ -19,8 +19,11 @@ class T5MovieExtractor:
         prompt = 'Perform named entity recognition to extract movie titles. '\
         'List all movie titles that appears in text above. '\
         'Separate movie names using comma, and do not include years, genre, director, award '\
-        'and other movie-related word that are not titles.'
+        'and other movie-related word that are not titles.',
+        entity_dictionary = None
     ):
+        if entity_Dictionary is not None:
+            raise ValueError('T5 Movie Extractor currently does not support custom entity for fuzzy matching')
         self.device = device
         self.max_length = max_length
         self.tokenizer = AutoTokenizer.from_pretrained(model_name_or_path)
