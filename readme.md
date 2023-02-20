@@ -14,6 +14,7 @@ bash train model.sh
 
 Example Usage
 ```
+from t5_movie_extractor import T5MovieExtractor
 extractor = T5MovieExtractor('./checkpoints/generative_movie_title_ner')
 extractor(
         ['I love the scene in Titanic!', 'Gone With the Wind\nAvengers End Game\The Zippers Saga', 'omg love this!'],
