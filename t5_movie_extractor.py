@@ -22,7 +22,7 @@ class T5MovieExtractor:
         'and other movie-related word that are not titles.',
         entity_dictionary = None
     ):
-        if entity_Dictionary is not None:
+        if entity_dictionary is not None:
             raise ValueError('T5 Movie Extractor currently does not support custom entity for fuzzy matching')
         self.device = device
         self.max_length = max_length
