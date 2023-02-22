@@ -60,14 +60,25 @@ def get_surface_mention(needle, haystack, edit_threshold=2):
     return [Mention(surface, needle, to_string_option='info') for surface in regex.findall(rule, haystack)]
 
 
-def fuzzy_findall(needles, haystack, edit_threshold=2, sort=True):
+def fuzzy_findall(
+    needles, 
+    haystack, 
+    edit_threshold=2, 
+    sort=True, 
+    ignore_needle_with_more_than_k_matches=5,
+    verbose=True
+    ):
     """
     needles: list of keywords
     haystack: your string document
+    fuzzy_off_at_needle_length: fuzzy matching will turn off if needle is too short
     """
     out = []
     for needle in needles:
         mentions = get_surface_mention(needle, haystack, edit_threshold=edit_threshold)
+        if len(mentions) > ignore_needle_with_more_than_k_matches:
+            print('Warining: fuzzy_findall: ignoring [', needle, '], too many matches. Surpress this warning by verbose flag.')
+            mentions = []
         for mention in mentions:
             out += match_all(mention, haystack)
     out = sorted(out, key=lambda x:x.root_pos)
