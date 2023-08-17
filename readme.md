@@ -1,7 +1,6 @@
 # Distant Supervised Movie Title Extraction Using FLAN-T5
 
-Generative movie title retrieval using FLAN-T5-BASE in 🤗HuggingFace ecosystem. Use our model directly [from the model hub](https://huggingface.co/zhohanx/t5-movie-title-retrieval)!
-
+Generative movie title retrieval using FLAN-T5 family in 🤗HuggingFace ecosystem. Use our model directly from the model hub! We recommended model based on [flan-t5-xl](https://huggingface.co/zhohanx/t5-movie-title-retrieval-xl), you can also try finetuned [flan-t5-base](https://huggingface.co/zhohanx/t5-movie-title-retrieval) under limited resources.
 ```
 conda create --name <env> --file requirements.txt
 mkdir -p ./checkpoints/generative_movie_title_ner
@@ -15,7 +14,7 @@ bash train model.sh
 Example Usage
 ```
 from t5_movie_extractor import T5MovieExtractor
-extractor = T5MovieExtractor('zhohanx/t5-movie-title-retrieval')
+extractor = T5MovieExtractor('zhohanx/t5-movie-title-retrieval-xl')
 extractor(
         ['I love the scene in Titanic!', 'Gone With the Wind\nAvengers End Game\The Zippers Saga', 'omg love this!'],
         batch_size=2,
